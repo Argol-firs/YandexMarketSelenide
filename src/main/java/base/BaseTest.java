@@ -1,11 +1,15 @@
-package ru.yandex;
+package base;
 
+import Steps.ActionOnPage;
+import Steps.StepManager;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BaseTest {
+    //public static final ActionOnPage page = new ActionOnPage();
+    public final StepManager page = new StepManager();
 
     @BeforeEach
     public void options() {

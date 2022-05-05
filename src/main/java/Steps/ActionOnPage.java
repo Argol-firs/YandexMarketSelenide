@@ -7,49 +7,48 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 
-public class Steps extends CatalogYandex {
+public class ActionOnPage implements CatalogYandex {
 
     @Step("Проверка наличия сервиса {link}")
     public void goLinkByName(String link) {
-        getYandexService().find(text(link)).click();
+        yandexService.find(text(link)).click();
         switchTo().window(1);
     }
 
     @Step("Нажать на каталог")
     public void clickCatalog() {
-        getMainCatalog().click();
+        mainCatalog.click();
     }
 
     @Step("Выбрать сервис {linkService}")
     public void goLinkByNameService(String linkService) {
-        getYandexMaretServices().find(text(linkService)).shouldBe(visible).hover();
+        yandexMaretServices.find(text(linkService)).shouldBe(visible).hover();
     }
 
     @Step("Выбрать подменю {linkSubService}")
     public void goLinkByNameSubService(String linkSubService) {
-        getSubservices().find(text(linkSubService)).shouldBe(visible).click();
+        subservices.find(text(linkSubService)).shouldBe(visible).click();
     }
 
     @Step("Выбрать производителя {nameManufacturer}")
     public void checkManufacturer(String nameManufacturer) {
-        getManufacture().find(text(nameManufacturer)).shouldBe(visible).click();
+           manufacture.find(text(nameManufacturer)).shouldBe(visible).click();
     }
 
     @Step("Открыть выпадающее меню")
     public void openDropDownMenu() {
-        getDropDownButton().hover().click();
+        dropDownButton.hover().click();
     }
 
     @Step("Установка показывать 12 элементов на странице")
-    public void click12Items() {
-        getItems12check().click();
+    public void click12Items() { items12check.click();
     }
 
     @Step("Пролистывание страниц выборки")
     public void clickNextPage() {
-        while (getButtonNext().exists()) {
-            getButtonNext().hover().click();
-            getLoaderButton().waitUntil(disappear, 5000);
+        while (buttonNext.exists()) {
+            buttonNext.hover().click();
+            loaderButton.waitUntil(disappear, 5000);
         }
     }
 }
